@@ -1,8 +1,10 @@
 // implement your API here
 const express = require('express'); // built in node.js module to handle http traffic
+const cors = require('cors')
 let db = require('./data/db.js')
 const server = express(); // the local computer where the server is running
 server.use(express.json())
+server.use(cors())
 
 
 server.get("/", (req, res) => {
@@ -117,7 +119,7 @@ server.delete('/api/users/:id', (req, res) => {
                 db.find()
                     .then(users => {
                         res.status(200).json({
-                            message: `The user has been removed from database`
+                            delete: response
                         })
                     })
                     .catch(err => {
